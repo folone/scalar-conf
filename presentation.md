@@ -169,8 +169,8 @@ res11: play.api.libs.json.Writes[Omg] =
 @ import shapeless._
 import shapeless._
 
-@ val hlist = 1 :: "hello" :: HNil
-hlist: Int :: String :: HNil = 1 :: hello :: HNil
+@ val hlist = 1l :: "hello" :: HNil
+hlist: Long :: String :: HNil = 1 :: hello :: HNil
 
 ```
 
@@ -178,7 +178,7 @@ hlist: Int :: String :: HNil = 1 :: hello :: HNil
 
 ```scala
 @ hlist(0)
-res7: Int = 1
+res7: Long = 1
 
 @ hlist(1)
 res8: String = hello
@@ -188,7 +188,7 @@ res8: String = hello
 Implicit not found: Scary[Type].Please#Ignore
 You requested to access an element at the position
 TypelevelEncodingFor[2.type]
-but the HList Int :: String :: HNil is too short.
+but the HList Long :: String :: HNil is too short.
        hlist(2)
             ^
 Compilation failed.
@@ -203,7 +203,7 @@ Compilation failed.
 defined class Track
 
 @ val generic = Generic[Track]
-generic: shapeless.Generic[Track]{type Repr = Int :: String :: HNil} =
+generic: shapeless.Generic[Track]{type Repr = Long :: String :: HNil} =
   anon$macro$3$1@7f8f5e52
 ```
 
@@ -214,7 +214,7 @@ generic: shapeless.Generic[Track]{type Repr = Int :: String :: HNil} =
 representation: res0.Repr = 1 :: hello :: HNil
 
 @ representation(0)
-res10: Int = 1
+res10: Long = 1
 
 @ representation(1)
 res11: String = hello
@@ -224,7 +224,7 @@ res11: String = hello
 Implicit not found: Scary[Type].Please#Ignore
 You requested to access an element at the position
 TypelevelEncodingFor[2.type]
-but the HList Int :: String :: HNil is too short.
+but the HList Long :: String :: HNil is too short.
        representation(2)
                      ^
 ```
