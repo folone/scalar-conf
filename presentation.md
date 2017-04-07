@@ -13,9 +13,7 @@
 
 ---
 
-# [fit]
-
-![](https://dl.dropboxusercontent.com/u/4274210/sc_cmyk_white.ai)
+![filtered](https://dl.dropboxusercontent.com/u/4274210/sc_cmyk_white.ai)
 
 ---
 
@@ -329,7 +327,8 @@ override def project[F, G](instance: => Writes[G],
 ---
 
 ```scala
-@annotation.implicitAmbiguous("You have a Unit hiding somewhere in your types")
+@annotation.implicitAmbiguous(
+  "You have a Unit hiding somewhere in your types")
 implicit def noUnits: Writes[Unit] = null
 implicit def noUnitsBitte: Writes[Unit] = null
 ```
@@ -355,8 +354,6 @@ val res2 = Json.writes[Unit]
 ---
 
 ```scala
-@ import shapeless._
-import shapeless._
 @ {
   sealed trait Playable
   case class Track(id: Long, payload: String) extends Playable
@@ -399,6 +396,15 @@ res7: play.api.libs.json.JsValue =
   {"tracks":[{"id":1,"payload":"payload1"},
              {"id":2,"payload":"payload2"}]}
 ```
+
+---
+# [fit] By @davegurnell
+![left](img/shapeless_book.png)
+
+---
+
+By @cvogt
+# [fit] [https://github.com/xdotai/play-json-extensions](https://github.com/xdotai/play-json-extensions)
 
 ---
 
