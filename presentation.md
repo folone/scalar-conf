@@ -240,6 +240,22 @@ res7: Track = Track(1L, "hello")
 
 ---
 
+# [fit] `Track(id: Long, payload: String)`
+
+---
+
+# [fit] `(Long, String)`
+
+^ I'm lying a little bit, since we're loosing the names ("id" and "payload")
+^ but this will do for this toy example
+^ and shapeless solves this problem with magic
+
+---
+
+# [fit] `Long :: String :: HNil`
+
+---
+
 # [fit] Putting this together
 
 ```scala
