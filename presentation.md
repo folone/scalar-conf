@@ -100,11 +100,6 @@
 
 ---
 
-# [fit] `import Json.writes._ // Json.writes.deriveInstance`
-# [fit] `implicit val writes = Json.writes[Track]`
-
----
-
 ```scala
 @ import play.api.libs.json.{Json => PJson}
 import play.api.libs.json.{Json => PJson}
@@ -114,7 +109,21 @@ _13: Int, _14: Int, _15: Int, _16: Int, _17: Int, _18: Int,
 _19: Int, _20: Int, _21: Int, _22: Int, _23: Int)
 defined class Omg
 @ PJson.writes[Omg]
-cmd9.sc:1: No unapply or unapplySeq function found for class Omg: <none> / <none>
+cmd9.sc:1: No unapply or unapplySeq function found for class Omg.
+val res9 = PJson.writes[Omg]
+                       ^
+Compilation Failed
+```
+
+---
+
+# [fit] `import Json.writes._ // Json.writes.deriveInstance, implementation details`
+# [fit] `implicit val writes = Json.writes[Track]`
+
+---
+
+```scala
+cmd9.sc:1: No unapply or unapplySeq function found for class Omg.
 val res9 = PJson.writes[Omg]
                        ^
 Compilation Failed
@@ -123,7 +132,8 @@ import com.soundcloud.json.Json
 @ import Json.writes._
 import Json.writes._
 @ Json.writes[Omg]
-res11: play.api.libs.json.Writes[Omg] = play.api.libs.json.Writes$$anon$5@60ec44ee
+res11: play.api.libs.json.Writes[Omg] =
+  play.api.libs.json.Writes$$anon$5@60ec44ee
 ```
 
 ^ Before https://github.com/soundcloud/api-web/blob/4ae946841fee104e2f5b59107b848058dd13d56c/src/main/scala/com/soundcloud/api/v2/representation/Track.scala#L175
@@ -133,6 +143,14 @@ res11: play.api.libs.json.Writes[Omg] = play.api.libs.json.Writes$$anon$5@60ec44
 ---
 
 # [fit] How does this work exactly? ಠ_ಠ
+
+---
+
+# [fit] :scream: >700LOC of macro :scream:
+
+^ https://github.com/playframework/play-json/blob/master/play-json/shared/src/main/scala/JsMacroImpl.scala#L52-L753
+^ To be fair, shapeless also has a >100LOC of macro
+^ https://github.com/milessabin/shapeless/blob/10352b9f5b364fb8c810dcbfb278444f10798ccb/core/src/main/scala/shapeless/generic.scala#L998-L1081
 
 ---
 
