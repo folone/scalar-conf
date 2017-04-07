@@ -217,6 +217,8 @@ but the HList Int :: String :: HNil is too short.
 res7: Track = Track(1L, "hello")
 ```
 
+^ basically allows a transformation there and back
+
 ---
 
 # [fit] Putting this together
@@ -239,6 +241,10 @@ object writes extends LabelledProductTypeClassCompanion[Writes] with DefaultWrit
               case _ => PlayJson.obj()
             }
         }
+
+      override def project[F, G](instance: => Writes[G], to: F => G, from: G => F) =
+        Writes[F](f => instance.writes(to(f)))
+
     }
 }
 ```
@@ -267,6 +273,15 @@ override def product[H, T <: HList](name: String,
           case _ => PlayJson.obj()
         }
     }
+```
+
+---
+
+```scala
+override def project[F, G](instance: => Writes[G],
+  to: F => G, from: G => F) =
+    Writes[F](f => instance.writes(to(f)))
+
 ```
 
 ---
