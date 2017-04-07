@@ -13,6 +13,8 @@
 
 ---
 
+# [fit]
+
 ![](https://dl.dropboxusercontent.com/u/4274210/sc_cmyk_white.ai)
 
 ---
