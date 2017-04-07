@@ -1,14 +1,15 @@
 # [fit] Case study:
 # [fit] **type-level** programming in the real world
 
+![](img/woods.jpg)
+
 ---
 
-# [fit] :wave:
 # My name is @folone
 
 [https://github.com/folone/scalar-conf](https://github.com/folone/scalar-conf)
 
-![](https://cdn.eyeem.com/thumb/921cbec0c6081762b3ee7f5dcc85587c0b5716e1-1463689016783/3900/3900?highRes=true)
+![](img/me.jpg)
 
 ---
 
@@ -17,7 +18,7 @@
 ---
 
 ![fill inline](https://i1.sndcdn.com/avatars-000115643651-71o36c-t500x500.jpg)![fill inline](https://i1.sndcdn.com/artworks-000037484402-x8gfft-t500x500.jpg)![fill inline](https://i1.sndcdn.com/avatars-000138955484-r3yxsu-t500x500.jpg)![fill inline](https://i1.sndcdn.com/avatars-000207169396-qjliyo-t500x500.jpg)
-![fill inline](https://i1.sndcdn.com/avatars-000109087465-2uqbx8-t500x500.jpg)![fill inline](https://i1.sndcdn.com/avatars-000055035285-1i17eh-t500x500.jpg)![fill inline](https://i1.sndcdn.com/avatars-000077357035-7tbvde-t500x500.jpg)![fill inline](https://i1.sndcdn.com/avatars-000170331047-7qtaxt-t500x500.jpg)
+![fill inline](https://i1.sndcdn.com/avatars-000109087465-2uqbx8-t500x500.jpg)![fill inline](https://i1.sndcdn.com/avatars-000055035285-1i17eh-t500x500.jpg)![fill inline](https://i1.sndcdn.com/avatars-000077357035-7tbvde-t500x500.jpg)![fill inline](https://i1.sndcdn.com/avatars-000212544901-u1694d-t500x500.jpg)
 
 ---
 
@@ -28,12 +29,7 @@
 
 ![left](https://cdn.eyeem.com/thumb/c23be843844f1f0129727da2ed2f0a3991ca1347-1463689289498/3900/3900)
 
-^ quite unique: major labes and dark underground
-^ 4x spotify audio (>1PB vs >5PB)
-^ 10x smaller team than spotify
-^ a lot more interactive, as in the next slide
-^ by a huge margin bigger than any competitor in both usage and amount of data (collection size)
-^ except for youtube: that's bigger, but they aren't in the audio business per se
+^ typical corporate bullshit
 
 ---
 
@@ -43,13 +39,14 @@
 
 ![fill](http://www.scala-lang.org/resources/img/smooth-spiral@2x.png)
 
-^ story about rails app
-^ also clojure/jruby
+^ jvmkit
 
 ---
 
 # [fit] Case study:
 # [fit] **type-level** programming in the real world
+
+![](img/woods_again.jpg)
 
 ^ Normally talk about typelevel things: there's a prolog in your scala
 ^ Most frequent question: this is all good and fine,
@@ -144,9 +141,13 @@ res11: play.api.libs.json.Writes[Omg] =
 
 # [fit] How does this work exactly? ಠ_ಠ
 
+![](img/woods.jpg)
+
 ---
 
 # [fit] :scream: >700LOC of macro :scream:
+
+![](img/woods_again.jpg)
 
 ^ https://github.com/playframework/play-json/blob/master/play-json/shared/src/main/scala/JsMacroImpl.scala#L52-L753
 ^ To be fair, shapeless also has a >100LOC of macro
@@ -306,11 +307,15 @@ override def project[F, G](instance: => Writes[G],
 
 # [fit] The whole code
 
+![](img/me_again.jpg)
+
 ^ https://github.com/soundcloud/jvmkit/blob/master/jvmkit-core/src/main/scala/com/soundcloud/scalakit/json/Json.scala#L69-L108
 
 ---
 
 # [fit] Three details
+
+![](img/me_again.jpg)
 
 ---
 
@@ -342,6 +347,8 @@ val res2 = Json.writes[Unit]
 ---
 
 # Coproduc:+:s
+
+![](img/woods_again.jpg)
 
 ---
 
@@ -395,3 +402,5 @@ res7: play.api.libs.json.JsValue =
 
 # [fit] ?-
 *questions
+
+![](https://cdn.eyeem.com/thumb/64c6d31055eab6c6a537d6ae478ffea43f7c19ce-1463689152452/3900/3900?highRes=true)
