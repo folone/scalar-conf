@@ -51,6 +51,10 @@
 # [fit] Case study:
 # [fit] **type-level** programming in the real world
 
+^ Normally talk about typelevel things: there's a prolog in your scala
+^ Most frequent question: this is all good and fine,
+^ but where do you actually use this?
+
 ^ Plan:
 ^ * talk about jackson
 ^ * show play-json
@@ -58,6 +62,8 @@
 ^ * show what i've done with shapeless
 ^ * explain how it actually works
 
+^ work on the stream and activities team
+^ but started on internal-libraries team
 
 ---
 
@@ -206,6 +212,13 @@ but the HList Int :: String :: HNil is too short.
 
 ---
 
+```scala
+@ generic.from(hlist)
+res7: Track = Track(1L, "hello")
+```
+
+---
+
 # [fit] Putting this together
 
 ```scala
@@ -295,7 +308,7 @@ val res2 = Json.writes[Unit]
 
 ---
 
-# Coproducts
+# Coproduc:+:s
 
 ---
 
