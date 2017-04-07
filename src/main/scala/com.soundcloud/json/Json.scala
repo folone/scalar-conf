@@ -8,6 +8,7 @@ object Json {
     * An improved deriver for Writes instances for more than just case classes
     */
   object writes extends LabelledTypeClassCompanion[Writes] with DefaultWrites {
+    @annotation.implicitAmbiguous("You have a Unit hiding somewhere in your types")
     implicit def noUnits: Writes[Unit] = null
     implicit def noUnitsBitte: Writes[Unit] = null
 

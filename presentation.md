@@ -81,7 +81,7 @@
 
 ---
 
-# [fit] `implicit val writes = Json.writes[Hello]`
+# [fit] `implicit val writes = Json.writes[Track]`
 
 ^ people were generally happy with this syntax, but then for historical reasons
 ^ there were data transfer objects with more than 21 fields.
@@ -95,7 +95,7 @@
 ---
 
 # [fit] `import Json.writes._ // Json.writes.deriveInstance`
-# [fit] `implicit val writes = Json.writes[Hello]`
+# [fit] `implicit val writes = Json.writes[Track]`
 
 ---
 
@@ -174,18 +174,18 @@ Compilation failed.
 # [fit] Generic
 
 ```scala
-@ case class Hello(i: Int, s: String)
-defined class Hello
+@ case class Track(id: Long, payload: String)
+defined class Track
 
-@ val generic = Generic[Hello]
-generic: shapeless.Generic[Hello]{type Repr = Int :: String :: HNil} =
+@ val generic = Generic[Track]
+generic: shapeless.Generic[Track]{type Repr = Int :: String :: HNil} =
   anon$macro$3$1@7f8f5e52
 ```
 
 ---
 
 ```scala
-@ val representation = generic.to(Hello(1, "hello"))
+@ val representation = generic.to(Track(1, "hello"))
 representation: res0.Repr = 1 :: hello :: HNil
 
 @ representation(0)
@@ -288,9 +288,9 @@ implicit def noUnitsBitte: Writes[Unit] = null
 
 ```scala
 @ Json.writes[Unit]
-<console>:18: error: You have a Unit hiding somewhere in your types
-       Json.writes[Unit]
-                  ^
+cmd2.sc:1: You have a Unit hiding somewhere in your types
+val res2 = Json.writes[Unit]
+    ^
 ```
 
 ---
@@ -302,23 +302,47 @@ implicit def noUnitsBitte: Writes[Unit] = null
 ```scala
 @ import shapeless._
 import shapeless._
+@ {
+  sealed trait Playable
+  case class Track(id: Long, payload: String) extends Playable
+  case class Album(tracks: List[Track]) extends Playable
+  }
+defined trait Playable
+defined class Track
+defined class Album
 
-@ :paste
-// Entering paste mode (ctrl-D to finish)
+@ Generic[Playable]
+res2: Generic[Playable]{type Repr = Album :+: Track :+: CNil} =
+  $sess.cmd2$anon$macro$1$1@2f4344c6
+```
 
-sealed trait Ok
-case class Hello(i: Int) extends Ok
-case class Ping(pong: String) extends Ok
+---
 
-// Exiting paste mode, now interpreting.
+```scala
+@ import com.soundcloud.json.Json
+import com.soundcloud.json.Json
+@ import play.api.libs.json.{Json => PJson}
+import play.api.libs.json.{Json => PJson}
+@ PJson.writes[Playable]
+cmd5.sc:1: not found: type Writes
+val res5 = PJson.writes[Playable]
+                       ^
+Compilation Failed
+@ import Json.writes._
+import Json.writes._
+@ Json.writes[Playable]
+res6: play.api.libs.json.Writes[Playable] =
+  play.api.libs.json.Writes$$anon$5@c5ff6e1
+```
 
-defined trait Ok
-defined class Hello
-defined class Ping
+---
 
-@ Generic[Ok]
-res0: shapeless.Generic[Ok]{type Repr = Hello :+: Ping :+: CNil} =
-  anon$macro$1$1@53fb7273
+```scala
+@ PJson.toJson(Album(List(Track(1, "payload1"),
+                          Track(2, "payload2"))))
+res7: play.api.libs.json.JsValue =
+  {"tracks":[{"id":1,"payload":"payload1"},
+             {"id":2,"payload":"payload2"}]}
 ```
 
 ---
