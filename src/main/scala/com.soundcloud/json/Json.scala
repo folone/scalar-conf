@@ -25,7 +25,7 @@ object Json {
 
             (h, t) match {
               case (JsNull, t: JsObject) => t
-              case (h: JsValue, t: JsObject) => PlayJson.obj(name -> h) ++ t
+              case (h, t: JsObject) => PlayJson.obj(name -> h) ++ t
               case _ => PlayJson.obj()
             }
         }

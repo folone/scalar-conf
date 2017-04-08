@@ -302,8 +302,9 @@ override def product[H, T <: HList](name: String,
         val t = tailEv.writes(tail)
 
         (h, t) match {
+          // For Nones
           case (JsNull, t: JsObject) => t
-          case (h: JsValue, t: JsObject) =>
+          case (h, t: JsObject) =>
             PlayJson.obj(name -> h) ++ t
           case _ => PlayJson.obj()
         }
